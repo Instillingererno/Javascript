@@ -20,8 +20,5 @@ settings.apply = () => {
     document.getElementsByClassName('main')[0].style.background = settings.main_background;
     document.getElementsByClassName('pages')[0].style.background = settings.pages_background;
     document.getElementsByClassName('tools')[0].style.background = settings.tools_background;
-    //document.getElementsByClassName('home')[0].style.background = settings.home_picture;
-    document.getElementById('container').setAttribute("style", "grid-template-columns : " + settings.tools_size + "px auto");
-    document.getElementById('container').setAttribute("style", "grid-template-rows : " + settings.pages_size + "px auto");
 
 };
