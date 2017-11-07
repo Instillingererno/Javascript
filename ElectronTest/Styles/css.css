@@ -23,7 +23,7 @@ body {
 
 .home {
     grid-area : home;
-    background-image : url("Images/Title.png");
+    background-image : url("../Images/Title.png");
     background-size : cover;
     background-repeat: no-repeat;
     z-index: 100;
@@ -64,4 +64,9 @@ body {
 .main {
     font-family: 'Roboto', sans-serif;
     box-shadow: inset 0px 10px 12px 0px rgba(0,0,0,0.75);
+}
+#iframe {
+    border: none;
+    height: 100%;
+    width: 100%;
 }
