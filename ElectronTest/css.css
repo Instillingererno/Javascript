@@ -1,5 +1,40 @@
+html {
+    min-height : 100%;
+    position : relative;
+}
 body {
+    height : inherit;
     margin : 0;
     padding : 0;
-    color : blue;
+    overflow : hidden;
+}
+
+#container {
+    height : inherit;
+    display : grid;
+    grid-template-columns : 40px auto;
+    grid-template-rows : 40px auto;
+    grid-template-areas :
+                "home pages"
+                "tools main";
+}
+
+.home {
+    grid-area : home;
+    background-color: red;
+}
+
+.pages {
+    grid-area : pages;
+    background-color: blue;
+}
+
+.tools {
+    grid-area : tools;
+    background-color : green;
+}
+
+.home {
+    grid-area : home;
+    background-color : black;
 }
