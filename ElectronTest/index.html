@@ -7,9 +7,12 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
         <script type="text/javascript">
             console.log("From index.html");
-
+            let sist = "Oversikt";
             function change(page) {
-                document.getElementById("iframe").src = "Pages/" + page;
+                document.getElementById("iframe").src = "Pages/" + page + ".html";
+                document.getElementById(sist).classList.remove("active");
+                document.getElementById(page).classList.add("active");
+                sist = page;
             }
         </script>
         <script src="Scripts/objects_static.js" charset="utf-8"></script>
@@ -23,11 +26,11 @@
             </div>
             <div class="pages">
                 <ul>
-                    <li><a class="active" onclick="change('Oversikt.html')">Oversikt</a></li>
-                    <li><a onclick="change('Inntekt.html')">Inntekt</a></li>
-                    <li><a onclick="change('Utgifter.html')">Utgifter</a></li>
-                    <li><a onclick="change('Hjelp.html')">Hjelp</a></li>
-                    <li style="float:right; font-size: 40px;"><a onclick="change('Pluss.html')">+</a></li>
+                    <li><a id="Oversikt" class="active" onclick="change('Oversikt')">Oversikt</a></li>
+                    <li><a id="Inntekt" onclick="change('Inntekt')">Inntekt</a></li>
+                    <li><a id="Utgifter" onclick="change('Utgifter')">Utgifter</a></li>
+                    <li><a id="Hjelp" onclick="change('Hjelp')">Hjelp</a></li>
+                    <li style="float:right; font-size: 40px;"><a id="Pluss" onclick="change('Pluss')">+</a></li>
                 </ul>
             </div>
             <div class="tools">

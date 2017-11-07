@@ -64,6 +64,7 @@ body {
 .main {
     font-family: 'Roboto', sans-serif;
     box-shadow: inset 0px 10px 12px 0px rgba(0,0,0,0.75);
+    padding: 20px;
 }
 #iframe {
     border: none;
