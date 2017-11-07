@@ -71,3 +71,11 @@ body {
     height: 100%;
     width: 100%;
 }
+.info {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    background-color: white;
+    z-index: 200;
+}
