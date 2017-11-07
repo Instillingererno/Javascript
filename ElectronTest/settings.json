@@ -1,0 +1,8 @@
+{
+    "main_background" : "darkred",
+    "home_picture" : "Images/Title.png",
+    "tools_background" : "green",
+    "pages_background" : "blue",
+    "tools_size" : "50",
+    "pages_size" : "50"
+}

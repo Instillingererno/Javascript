@@ -10,7 +10,7 @@ body {
 }
 
 #container {
-    height : inherit;
+    height : 200px;
     display : grid;
     grid-template-columns : 40px auto;
     grid-template-rows : 40px auto;
@@ -21,20 +21,15 @@ body {
 
 .home {
     grid-area : home;
-    background-color: red;
+    background-image : url("Images/Title.png");
+    background-size : cover;
+    background-repeat: no-repeat;
 }
 
 .pages {
     grid-area : pages;
-    background-color: blue;
 }
 
 .tools {
     grid-area : tools;
-    background-color : green;
-}
-
-.home {
-    grid-area : home;
-    background-color : black;
 }
