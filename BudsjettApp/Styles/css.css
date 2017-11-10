@@ -1,0 +1,80 @@
+html {
+    min-height : 100%;
+    position : relative;
+}
+body {
+    height : inherit;
+    margin : 0;
+    padding : 0;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#container {
+    height : 200px;
+    display : grid;
+    grid-template-columns : 50px auto;
+    grid-template-rows : 50px auto;
+    grid-template-areas :
+                "home pages"
+                "tools main";
+}
+
+.home {
+    grid-area : home;
+    background-image : url("../Images/Title.png");
+    background-size : cover;
+    background-repeat: no-repeat;
+    z-index: 100;
+}
+
+.tools {
+    grid-area : tools;
+}
+
+.pages {
+    grid-area : pages;
+}
+.pages ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+.pages li {
+    float: left;
+}
+.pages li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 50px;
+    text-decoration: none;
+}
+.pages li a:hover:not(.active) {
+    background-color: #FF9800;
+}
+.active {
+    background-color: #FF5722;
+    box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.75);
+}
+.main {
+    font-family: 'Roboto', sans-serif;
+    box-shadow: inset 0px 10px 12px 0px rgba(0,0,0,0.75);
+    padding: 20px;
+}
+#iframe {
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+.info {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    background-color: white;
+    z-index: 200;
+}

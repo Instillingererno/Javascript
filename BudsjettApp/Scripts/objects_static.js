@@ -23,7 +23,7 @@ settings.apply = () => {
 
 };
 
-
+/*     Tidligere løsning 
 let totalsum = 0;
 let budget = [
     ["Måneder","Inntekt","Utgift"],
@@ -83,3 +83,4 @@ budget.sum = (x,y) => {
     totalsum += output;
     return output;
 }
+*/

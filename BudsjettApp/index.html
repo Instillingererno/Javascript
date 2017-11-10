@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hello World!</title>
+        <link rel="stylesheet" type="text/css" href="Styles/css.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
+        <script src="Scripts/objects_static.js" charset="utf-8"></script>
+        <script src="Scripts/objects_mutable.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            console.log("From index.html");
+            let sist = "Oversikt";
+            function change(page) {
+                document.getElementById("iframe").src = "Pages/" + page + ".html";
+                document.getElementById(sist).classList.remove("active");
+                document.getElementById(page).classList.add("active");
+                sist = page;
+            }
+
+            let pluss_info = new Info("Denne har ingen funksjon enda og jeg vet ikke om den kommer til å få det heller..");
+        </script>
+        <script src="Scripts/events.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="container">
+            <div class="home">
+
+            </div>
+            <div class="pages">
+                <ul>
+                    <li><a id="Oversikt" class="active" onclick="change('Oversikt')">Oversikt</a></li>
+                    <li><a id="Utgifter" onclick="change('Utgifter')">Utgifter</a></li>
+                    <li><a id="Budsjett" onclick="change('Budsjett')">Budsjett</a></li>
+                    <li><a id="Hjelp" onclick="change('Hjelp')">Hjelp</a></li>
+                    <li style="float:right; font-size: 40px;" onmouseover="pluss_info.show(event)" onmouseout="pluss_info.remove()"><a id="Pluss" onclick="change('Pluss')">+</a></li>
+                </ul>
+            </div>
+            <div class="tools">
+
+            </div>
+            <div class="main">
+                <iframe id="iframe" src="Pages/Oversikt.html" scrolling="yes"></iframe>
+            </div>
+        </div>
+    </body>
+</html>
