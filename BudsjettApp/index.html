@@ -5,7 +5,7 @@
         <title>Hello World!</title>
         <link rel="stylesheet" type="text/css" href="Styles/css.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
-        <script src="Scripts/objects_static.js" charset="utf-8"></script>
+        <script src="Scripts/objects.js" charset="utf-8"></script>
         <script src="Scripts/objects_mutable.js" charset="utf-8"></script>
         <script type="text/javascript">
             console.log("From index.html");
@@ -17,9 +17,13 @@
                 sist = page;
             }
 
+            window.onresize = (e) => {
+                console.log("Window resize triggered, changing 'container' height");
+                document.getElementById('container').style.height = window.innerHeight.toString() + "px";
+            }
+
             let pluss_info = new Info("Denne har ingen funksjon enda og jeg vet ikke om den kommer til å få det heller..");
         </script>
-        <script src="Scripts/events.js" charset="utf-8"></script>
     </head>
     <body>
         <div id="container">

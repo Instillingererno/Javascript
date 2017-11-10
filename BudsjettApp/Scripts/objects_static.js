@@ -1,4 +1,4 @@
-let settings = {};
+/*let settings = {};    Tidligere løsning for instillinger, nå bruker File classen
 settings.init = (file) => {
     console.log("Trying synchronous file read");
     const fs = require('fs');
@@ -21,9 +21,9 @@ settings.apply = () => {
     document.getElementsByClassName('pages')[0].style.background = settings.pages_background;
     document.getElementsByClassName('tools')[0].style.background = settings.tools_background;
 
-};
+};*/
 
-/*     Tidligere løsning 
+/*     Tidligere løsning
 let totalsum = 0;
 let budget = [
     ["Måneder","Inntekt","Utgift"],
