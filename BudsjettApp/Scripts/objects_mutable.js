@@ -1,5 +1,5 @@
 
-class Page {
+class Page { //HUske ikkje ka denne ska gjør
     constructor(name, method) {
         this.name = name;
         this.method = method;
@@ -26,11 +26,9 @@ class Info {
     }
 }
 
-
-class File {
+class Fil {
     constructor(src) {
         this.source = src;
-        this.array = {};
     }
     load() {
         console.log("Trying synchronous file read");
@@ -45,7 +43,7 @@ class File {
         }
         let keys = Object.keys(temp);
         for(let i = 0; i < keys.length; i++) {
-            this.array[keys[i]] = temp[keys[i]];
+            this[keys[i]] = temp[keys[i]];
         }
     }
     save() {
@@ -57,9 +55,15 @@ class File {
     }
 }
 
+const MONTHS = ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"];
 
 class Tabell {
-    constructor() {
-      
+    constructor(header, file) {
+        this.header = header;
+        this.file = file;
+    }
+    writeToDom() {
+        console.log("Denne gjør ingenting enda");
+        //do stuff
     }
 }

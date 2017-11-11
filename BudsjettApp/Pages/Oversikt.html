@@ -2,9 +2,16 @@
     <link rel="stylesheet" type="text/css" href="../Styles/css.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
     <script src="../Scripts/objects_mutable.js" charset="utf-8"></script>
+    <script src="../Scripts/objects_static.js" charset="utf-8"></script>
     <script src="../Scripts/objects.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        window.onload = () => {
+            if(account.start == 0 && account.transactions == 0) {
+                document.body.appendChild(NEWACCOUNT);
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>OVERSIKT</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </body>

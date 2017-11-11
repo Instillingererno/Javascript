@@ -1,3 +1,24 @@
+const NEWACCOUNT = (document.createElement('div')
+                    .appendChild(document
+                        .createElement('h2')
+                        .appendChild(document
+                            .createTextNode(
+                                "Finner ikke en tidligere lagret konto.\
+                                For å ta i bruk start portalen for å enkelt starte en ny konto\
+                                trykk på knappen, ellers fortsett som du vil."
+                            )
+                        )
+                    ))
+                    .appendChild(document
+                        .createElement('button')
+                        .appendChild(document
+                            .createTextNode(
+                                "Åpne portal"
+                            )
+                        )
+                    );
+//<button type='button' name='button'>Åpne portal</button>";
+
 /*let settings = {};    Tidligere løsning for instillinger, nå bruker File classen
 settings.init = (file) => {
     console.log("Trying synchronous file read");
