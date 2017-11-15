@@ -1,0 +1,18 @@
+.tosidig {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 20px auto;
+    grid-template-areas: "title title"
+                          "left right";
+    justify-items: stretch;
+    grip-gap: 10px;
+}
+.tosidig .title {
+    grid-area: title;
+}
+.tosidig .left {
+    grid-area: left;
+}
+.tosidig .right {
+    grid-area: right;
+}
