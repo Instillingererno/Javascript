@@ -40,7 +40,7 @@
 			text-align: center;
 			z-index: 0;
 		}
-		#menu {
+		#menuSlide {
 			position: fixed;
 			left: 0;
 			top: 0;
@@ -48,6 +48,7 @@
 			width: 0;
 			background-color: #455A64;
 			z-index: 200;
+			overflow: hidden;
 		}
 		#questions {
 			margin-top: 200px;
@@ -68,11 +69,11 @@
 <body>
 
 	<div id="header">
-		<i id="menu" class="material-icons" style="float:left; font-size: 200px;">menu</i>
+		<i id="menuIcon" class="material-icons" style="float:left; font-size: 200px;">menu</i>
 		<p id="name" style="float:left;">Quiz!</p>
 	</div>
 
-	<div id="menu">
+	<div id="menuSlide">
 		<h2>Menu</h2>
 	</div>
 
@@ -94,7 +95,7 @@
 		</div>
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="jquery.mobile.custom.min.js"></script>
 	<script type="text/javascript">
 
@@ -124,16 +125,11 @@
 			$('#questions').children().each(function() {
 				$(this).css({'background-color': colors.randomElement()});
 			});
-			$('menu').click(toggleMenu(90));
+			$('#menuIcon').click(toggleMenu(window.innerWidth*0.9));
 		});
 
 		function toggleMenu(width) {
-			if(state.menu) {
-				//Menu is showing and needs to be removed
-			} else {
-				//Menu is hidden and needs to be shown
-
-			}
+			$('menuSlide').css("width", state.menu ? 0 : width);
 		}
 
 		function scrollHandler() {
@@ -145,7 +141,7 @@
 				"line-height": temp[0],
 			}
 			$('#header').css(attr);
-			$('#menu').css("font-size", (scroll < 150) ? (200 - scroll)+"px" : '50px');
+			$('#menuIcon').css("font-size", (scroll < 150) ? (200 - scroll)+"px" : '50px');
 		}
 
 
