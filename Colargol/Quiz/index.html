@@ -45,10 +45,11 @@
 			left: 0;
 			top: 0;
 			bottom: 0;
-			width: 0;
-			background-color: #455A64;
+			width: 0px;
+			background-color: rgba(69, 90, 100, 0.92);
 			z-index: 200;
 			overflow: hidden;
+			transition-duration: 1s;
 		}
 		#questions {
 			margin-top: 200px;
@@ -69,12 +70,13 @@
 <body>
 
 	<div id="header">
-		<i id="menuIcon" class="material-icons" style="float:left; font-size: 200px;">menu</i>
+		<i id="menuIcon" class="material-icons" style="float:left; font-size: 200px;" onclick="toggleMenu(0.9)">menu</i>
 		<p id="name" style="float:left;">Quiz!</p>
 	</div>
 
 	<div id="menuSlide">
 		<h2>Menu</h2>
+		<i class="material-icons">arrow_forward</i>
 	</div>
 
 	<div id="questions">
@@ -116,7 +118,7 @@
 		];
 
 		let state = {
-			menu: false
+			menu: true
 		};
 
 		$(document.body).on('touchmove', scrollHandler); //for mobile
@@ -125,11 +127,13 @@
 			$('#questions').children().each(function() {
 				$(this).css({'background-color': colors.randomElement()});
 			});
-			$('#menuIcon').click(toggleMenu(window.innerWidth*0.9));
+			$('#menuIcon').on('click', toggleMenu(window.innerWidth*0.9));
 		});
 
 		function toggleMenu(width) {
-			$('menuSlide').css("width", state.menu ? 0 : width);
+			console.log("i got here");
+			$('#menuSlide').css("width", state.menu ? "0px" : window.innerWidth*width+"px");
+			state.menu = !state.menu;
 		}
 
 		function scrollHandler() {
