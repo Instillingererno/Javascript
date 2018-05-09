@@ -1,0 +1,40 @@
+.icon-wrapper {
+    --box: 100px;
+    height: var(--box);
+    margin: 0;
+    padding: 0;
+}
+.icon-wrapper i {
+    background-color: tomato;
+    float: left;
+    font-size: var(--box);
+    border-radius: var(--box);
+    z-index: 1;
+}
+.icon-wrapper h2 {
+    --font: 20px;
+    padding: 2px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    font-size: var(--font);
+    overflow: hidden;
+    width: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: -20px;
+    padding-left: 20px;
+    position: relative;
+    float: left;
+    margin-top: 25%;
+    background-color: tomato;
+    z-index: -1;
+    transition-duration: 5s;
+}
+
+.icon-wrapper:hover {
+}
+.icon-wrapper:hover i {
+}
+.icon-wrapper:hover h2 {
+    width: fit-content;
+}
