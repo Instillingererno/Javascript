@@ -30,7 +30,7 @@ let dropCounter = 0;
 
 function draw(time = 0) {
     //TIME management
-    [deltaTime, lastTime, time] = [time-lastTime, time];
+    [deltaTime, lastTime] = [time-lastTime, time];
     dropCounter += deltaTime;
 
     //Calculate

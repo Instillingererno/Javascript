@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    padding: 0; 
+    padding: 0;
     font-family: 'Source Sans Pro', sans-serif;
 }
 body {
@@ -88,7 +88,7 @@ body {
 
 @media screen and (min-width: 980px) /* Desktop */ {
     /* CONTENT */
-    
+
 }
 
 @media screen  and (max-width: 979px) /* Tablet */ {
@@ -121,7 +121,7 @@ body {
         border-bottom: 2px solid rgba(0,0,0,0.1);
     }
     #content .first p {
-    
+
     }
 }
 
@@ -136,5 +136,13 @@ body {
         grid-auto-flow: row;
         grid-gap: 10px;
         margin-bottom: 100px;
+    }
+    #content .element {
+        margin: 0 !important;
+    }
+    #content .element p {
+        visibility: hidden;
+        height: 0;
+        opacity: 0;
     }
 }
