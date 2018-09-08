@@ -1,0 +1,46 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <input type="text">
+        <input id="knapp" type="button" value="button">
+    </body>
+    <script>
+        let url = "http://bigdata.stud.iie.ntnu.no/sentiment/webresources/sentiment?api-key=Happy!!!"
+
+        document.getElementById("knapp").addEventListener("click", (buttonEvent) => {
+            if(document.querySelector("input").value === "") return
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                body: JSON.stringify({ sentence: document.querySelector("input").value })
+            })
+            .then(response => response.json())
+            .then((jsonResponse) => {
+                console.log("Sinnsstemning " + jsonResponse.value);
+                switch(jsonResponse.value) {
+                    case 0:
+                        document.body.style.background = "#000"
+                    break;
+                    case 1:
+                        document.body.style.background = "#333"
+                    break;
+                    case 2:
+                        document.body.style.background = "#777"
+                    break;
+                    case 3:
+                        document.body.style.background = "#AAA"
+                    break;
+                    case 4:
+                        document.body.style.background = "#FFF"
+                    break; 
+                }
+            })
+            .catch(error => console.log(error))
+        })
+    </script>
+</html>
