@@ -2,17 +2,148 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
 const path = require("path");
+const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 
 const app = express();
 app.use(express.static('build'));
-
-const base = path.resolve('.');
-const index = base + '/build/index.html';
+app.use(bodyParser.json());
 
 
-app.get('/test', function (req, res) {
-    res.sendFile(index);
+// MySQL init
+const pool = mysql.createPool({
+    connectionLimit: 2,
+    host: "mysql.stud.iie.ntnu.no",
+    user: "sveinuov",
+    password: "44joRTCx",
+    database: "sveinuov",
+    debug: false
 });
+
+
+
+// LOGIN
+
+function genRandomString(length) {
+    return crypto.randomBytes(Math.ceil(length/2))
+        .toString('hex') // Convert to hex format
+        .slice(0,length); // Return required number of characters
+}
+
+function sha256(password, salt) {
+    let hash = crypto.createHmac('sha256', salt);
+    hash.update(password);
+    return hash.digest('hex');
+}
+
+function generateHashPassword(password) {
+    let salt = genRandomString(16);
+    let passwordHash = sha256(password, salt);
+    return {
+        salt: salt,
+        hash: passwordHash
+    }
+}
+
+// LOGIN END
+
+
+// Burde vært ekte sertifikat, lest fra config...
+const privateKey = (publicKey = "byDis");
+
+
+
+
+// Håndterer login og sender JWT-token tilbake som JSON
+app.post("/login", (req, res) => {
+    console.log("Attempting login for user: " + req.body.username);
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.log("DB error: " + err);
+            res.status(500);
+            res.json({ error: "Unable to fetch db connection" });
+        } else {
+            connection.query(
+                "SELECT * FROM users WHERE username = ?", [req.body.username],
+                (err, rows) => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        res.status(404);
+                        res.json({ error: "User doesn't exist" });
+                    } else {
+                        if (rows[0].password === sha256(req.body.password, rows[0].salt)) {
+                            console.log("Attempt was successful");
+                            let token = jwt.sign({ username: req.body.username }, privateKey, {
+                                expiresIn: 60*30  // Expires in 30 minutes
+                            });
+
+                            res.json({ jwt: token, username: rows[0].username });
+                        } else {
+                            console.log("Attempt was unsuccessful");
+                            res.status(401);
+                            res.json({ error: "Wrong username or password" });
+                        }
+                    }
+                }
+            )
+        }
+    });
+});
+
+
+
+app.use("/user", (req, res, next) => {
+    let token = req.headers["x-access-token"];
+    jwt.verify(token, publicKey, (err, decoded) => {
+        if (err) {
+            console.log("Token was NOT accepted");
+            res.status(401);
+            res.json({ error: "Not authorized" });
+        } else {
+            console.log("Token was accepted for user: " + decoded.username);
+            next();
+        }
+    });
+});
+
+app.post("/user/token", (req, res) => {
+    let token = jwt.sign({ username: req.body.username }, privateKey, {
+        expiresIn: 60*30  // Expires in 30 minutes
+    });
+    res.json({ jwt: token });
+});
+
+app.post("/user/notifications/news", (req, res) => {
+    console.log("Attempting get notifications for user " + req.body.username);
+
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.log("DB error: " + err);
+            res.status(500);
+            res.json({ error: "Unable to fetch db connection" });
+        } else {
+            connection.query(
+                "SELECT * FROM notifications INNER JOIN users USING (username) WHERE username = ? AND seen IS FALSE ORDER BY -time",
+                [req.body.username],
+                (err, rows) => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        res.status(404);
+                        res.json({ error: "Notifications not found" });
+                    } else {
+                        res.json({ notifications: rows });
+                    }
+                }
+            )
+        }
+    })
+});
+
+
+
+
 
 
 const port = process.env.PORT || 3000;
