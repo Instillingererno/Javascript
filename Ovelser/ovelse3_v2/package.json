@@ -1,0 +1,32 @@
+{
+  "name": "ovelse3_v2",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^3.0.3",
+    "@material-ui/icons": "^3.0.1",
+    "body-parser": "^1.18.3",
+    "crypto": "^1.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.4",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.5",
+    "redux": "^4.0.0",
+    "redux-promise-middleware": "^5.1.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts build && node ./server/server.js",
+    "dev": "react-scripts build && nodemon ./server/server.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "engines": {
+    "node": "10.10.0"
+  }
+}
